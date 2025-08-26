@@ -46,17 +46,6 @@ export const TaskSection = ({ section, tasks, onUpdate, onDelete, onMove, onAdd 
     }
   };
 
-  const getSectionColor = () => {
-    switch (section) {
-      case TaskSectionType.DAILY:
-        return 'from-blue-500/20 to-blue-600/20 border-blue-500/30';
-      case TaskSectionType.WEEKLY:
-        return 'from-purple-500/20 to-purple-600/20 border-purple-500/30';
-      case TaskSectionType.MONTHLY:
-        return 'from-green-500/20 to-green-600/20 border-green-500/30';
-    }
-  };
-
   const getSectionGradient = () => {
     switch (section) {
       case TaskSectionType.DAILY:

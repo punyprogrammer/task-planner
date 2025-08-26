@@ -11,7 +11,7 @@ export const storage = {
       if (!stored) return [];
       
       const tasks = JSON.parse(stored);
-      return tasks.map((task: any) => ({
+      return tasks.map((task: Partial<Task> & { createdAt: string; updatedAt: string; completedAt?: string }) => ({
         ...task,
         createdAt: new Date(task.createdAt),
         updatedAt: new Date(task.updatedAt),

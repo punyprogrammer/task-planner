@@ -14,7 +14,6 @@ interface TaskCardProps {
 
 export const TaskCard = ({ task, onUpdate, onDelete, onMove }: TaskCardProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isEditing, setIsEditing] = useState(false);
   const [showMoveMenu, setShowMoveMenu] = useState(false);
 
   const handleStatusChange = (newStatus: TaskStatus) => {
@@ -140,7 +139,6 @@ export const TaskCard = ({ task, onUpdate, onDelete, onMove }: TaskCardProps) =>
           {/* Actions */}
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 pt-4">
             <button
-              onClick={() => setIsEditing(true)}
               className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-medium rounded-xl transition-all duration-200 hover:scale-105 shadow-lg"
             >
               <Edit3 className="w-3 h-3 sm:w-4 sm:h-4" />

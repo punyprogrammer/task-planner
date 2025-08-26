@@ -1,6 +1,6 @@
 'use client';
 
-import { Task, TaskStatus } from '@/types/task';
+import { Task } from '@/types/task';
 import { calculateTaskStats, getMonthlyStats } from '@/utils/stats';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line } from 'recharts';
 import { CheckCircle, Clock, Circle, TrendingUp, BarChart3, Activity } from 'lucide-react';
@@ -126,7 +126,7 @@ export const Stats = ({ tasks }: StatsProps) => {
                   color: '#f9fafb',
                   boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)',
                 }}
-                formatter={(value: any, name: any) => [value, name]}
+                formatter={(value: number, name: string) => [value, name]}
               />
             </PieChart>
           </ResponsiveContainer>
@@ -172,7 +172,7 @@ export const Stats = ({ tasks }: StatsProps) => {
                   color: '#f9fafb',
                   boxShadow: '0 10px 25px rgba(0, 0, 0, 0.3)',
                 }}
-                formatter={(value: any) => [`${value}%`, 'Completion Rate']}
+                formatter={(value: number) => [`${value}%`, 'Completion Rate']}
               />
               <Line
                 type="monotone"
