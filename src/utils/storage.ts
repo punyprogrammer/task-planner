@@ -1,6 +1,7 @@
 import { Task, TaskSection, TaskStatus } from '@/types/task';
 
 const STORAGE_KEY = 'task-planner-tasks';
+const BANDWIDTH_KEY = 'task-planner-daily-bandwidth';
 
 export const storage = {
   getTasks: (): Task[] => {
@@ -84,5 +85,28 @@ export const storage = {
 
   getTasksByStatus: (status: TaskStatus): Task[] => {
     return storage.getTasks().filter(task => task.status === status);
+  },
+
+  // Bandwidth management
+  getDailyBandwidth: (): number => {
+    if (typeof window === 'undefined') return 480; // Default 8 hours
+    
+    try {
+      const stored = localStorage.getItem(BANDWIDTH_KEY);
+      return stored ? parseInt(stored) : 480;
+    } catch (error) {
+      console.error('Error loading daily bandwidth from localStorage:', error);
+      return 480;
+    }
+  },
+
+  saveDailyBandwidth: (bandwidth: number): void => {
+    if (typeof window === 'undefined') return;
+    
+    try {
+      localStorage.setItem(BANDWIDTH_KEY, bandwidth.toString());
+    } catch (error) {
+      console.error('Error saving daily bandwidth to localStorage:', error);
+    }
   },
 };
